@@ -6,7 +6,7 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 1
+WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 reps = 0
@@ -21,16 +21,16 @@ def start_timer():
     reps += 1
     if(reps % 2 != 0):
         count_down(WORK_MIN * 60)
-        label.config(text="Work")
+        label.config(text="Work", fg=GREEN)
         window.attributes("-topmost", True)
         window.attributes("-topmost", False)
     elif(reps % 8 == 0):
         count_down(LONG_BREAK_MIN * 60)
-        label.config(text="Long Break")
+        label.config(text="Long Break", fg=RED)
         window.attributes("-topmost", True)
         window.attributes("-topmost", False)
     else:
-        count_down(SHORT_BREAK_MIN * 60)
+        count_down(SHORT_BREAK_MIN * 60, fg=PINK)
         label.config(text="Short Break")
         window.attributes("-topmost", True)
         window.attributes("-topmost", False)
