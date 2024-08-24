@@ -7,9 +7,10 @@ GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
 WORK_MIN = 25
-SHORT_BREAK_MIN = 5
+SHORT_BREAK_MIN = 1
 LONG_BREAK_MIN = 20
 reps = 0
+marks = ""
 
 # ---------------------------- TIMER RESET ------------------------------- # 
 def reset():
@@ -18,7 +19,14 @@ def reset():
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def start_timer():
     global reps 
+    global marks
     reps += 1
+
+    if(reps % 2 == 0):
+        marks += "✅"
+        print(reps, marks)
+        check_mark.config(text=marks)
+
     if(reps % 2 != 0):
         count_down(WORK_MIN * 60)
         label.config(text="Work", fg=GREEN)
@@ -77,7 +85,7 @@ start_btn.grid(row=2, column=0)
 reset_btn = Button(text="Reset", highlightthickness=0, command=reset)
 reset_btn.grid(row=2, column=2)
 
-check_mark = Label(text="✅", fg=GREEN, bg=YELLOW,  highlightthickness=0)
+check_mark = Label(fg=GREEN, bg=YELLOW,  highlightthickness=0)
 check_mark.grid(row=3, column=1)
 
 window.mainloop()
