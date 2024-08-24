@@ -30,8 +30,8 @@ def start_timer():
         window.attributes("-topmost", True)
         window.attributes("-topmost", False)
     else:
-        count_down(SHORT_BREAK_MIN * 60, fg=PINK)
-        label.config(text="Short Break")
+        count_down(SHORT_BREAK_MIN * 60)
+        label.config(text="Short Break", fg=PINK)
         window.attributes("-topmost", True)
         window.attributes("-topmost", False)
 
